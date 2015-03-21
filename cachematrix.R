@@ -42,24 +42,25 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Write a short comment describing this function
-## input  : an Object created with makeCacheMatrix
+## casheSolve : returns the cached inverted matrix for the matrix passed to 
+##              makeCacheMatrix function
+##              if no cache is available, the interface to create the inverted martix 
+##              is called in makeCacheMatrix and then the cached inverted matrix is called.  
+## input  : the object created with makeCacheMatrix
 ## output : the inverted matrix for the matrix passed to makeCacheMatrix
-## if the Inverted Matrix is already present in the object passed as paramter returns it
-## Otherwise the interface to create a Inverted matrix is called and the Inverted matrix 
-## is returned.
 ## 
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
-  mm <- x$getInv()
-  if (!is.null(mm)){
-    print ("return cache")
-    mm
+  cachedOriginalMatrix <- x$getInv()
+  if (!is.null(cachedOriginalMatrix)){
+    ## print ("return cache")
+    cachedOriginalMatrix
     
   } else {
-    print (x$get())
-    mmm <- x$get()
-    m<-x$setInv(mmm)
+    ## print (x$get())
+    originalMatrix <- x$get()
+    InvertedMatrix<-x$setInv(originalMatrix)
   }
   ## intern1 <- makeCacheMatrix(x) 
   ## intern1$setInv(x)
